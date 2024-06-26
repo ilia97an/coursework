@@ -1,0 +1,35 @@
+# Project: alien-project
+# Makefile created by Dev-C++ 5.2.0.1
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = interface.o main.o core.o $(RES)
+LINKOBJ  = interface.o main.o core.o $(RES)
+LIBS     = -L"D:/programs/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc  
+INCS     = -I"D:/programs/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" 
+CXXINCS  = -I"D:/programs/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" 
+BIN      = alien-project.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS   = $(INCS) -std=c99  
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before alien-project.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "alien-project.exe" $(LIBS)
+
+interface.o: interface.c
+	$(CC) -c interface.c -o interface.o $(CFLAGS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+core.o: core.c
+	$(CC) -c core.c -o core.o $(CFLAGS)
